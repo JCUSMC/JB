@@ -37,3 +37,12 @@ rank_data<-as.numeric(rank_data)
 #Let's have another look at the rankings
 head(rank_data)
 
+#Using CSS selectors to scrap the title section
+title_data_html <- html_nodes(webpage,'.lister-item-header a')
+
+#Converting the title data to text
+title_data <- html_text(title_data_html)
+
+#Let's have a look at the title
+head(title_data)
+
