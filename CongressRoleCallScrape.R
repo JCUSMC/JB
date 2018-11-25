@@ -15,7 +15,7 @@ congress = xmlSApply(rootNode[[1]][["congress"]], xmlValue)
 session = xmlSApply(rootNode[[1]][["session"]], xmlValue)
 vote_desc = xmlSApply(rootNode[[1]][["vote-desc"]], xmlValue)
 majority = xmlSApply(rootNode[[1]][["majority"]], xmlValue)
-chamber = xmlSApply(rootNode[[1]][["chamber"]], xmlValue)vote_chamber
+chamber = xmlSApply(rootNode[[1]][["chamber"]], xmlValue)
 rollcall = xmlSApply(rootNode[[1]][["rollcall-num"]], xmlValue)
 
 
