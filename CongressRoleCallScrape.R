@@ -9,7 +9,7 @@ rootNode <- xmlRoot(xmldoc)
 rootNode[1]
 
 xmlName(rootNode)
-names(rootNode[[1]])
+names(rootNode[[2]])
 
 congress = xmlSApply(rootNode[[1]][["congress"]], xmlValue)
 congress
@@ -25,12 +25,10 @@ vote_result
 vote_data = xmlSApply(rootNode[[2]][["recorded-vote"]], xmlValue)
 vote_data
 
-all = xmlSApply(rootNode[[2]], function(x) xmlSApply(x,xmlValue))
-all
+# Read and transpose all of the "recorded-vote" child node
+all = t(xmlSApply(rootNode[[2]], function(x) xmlSApply(x,xmlValue)))
+leg_vote = all[,2:3]
+leg_vote
 
-
-data <- xmlSApply(rootNode,function(x) xmlSApply(x, xmlValue))
-
-cd.catalog <- data.frame(t(data),row.names=NULL)
-
-cd.catalog[1:2,]
+x = xmlSApply(rootNode[[2]], xmlValue)
+x
