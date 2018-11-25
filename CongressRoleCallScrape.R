@@ -1,4 +1,4 @@
-#Loading the rvest package
+#Loading the XML package
 install.packages('XML')
 library('XML')
 
