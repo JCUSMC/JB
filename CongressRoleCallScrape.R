@@ -9,18 +9,16 @@ rootNode <- xmlRoot(xmldoc)
 rootNode[1]
 
 xmlName(rootNode)
-names(rootNode[[2]])
+names(rootNode[[1]])
 
 congress = xmlSApply(rootNode[[1]][["congress"]], xmlValue)
-congress
 session = xmlSApply(rootNode[[1]][["session"]], xmlValue)
-session
 vote_desc = xmlSApply(rootNode[[1]][["vote-desc"]], xmlValue)
-vote_desc
-vote_totals = xmlSApply(rootNode[[1]][["vote-totals"]], xmlValue)
-vote_totals
-vote_result = xmlSApply(rootNode[[1]][["vote-result"]], xmlValue)
-vote_result
+majority = xmlSApply(rootNode[[1]][["majority"]], xmlValue)
+chamber = xmlSApply(rootNode[[1]][["chamber"]], xmlValue)vote_chamber
+rollcall = xmlSApply(rootNode[[1]][["rollcall-num"]], xmlValue)
+
+
 
 vote_data = xmlSApply(rootNode[[2]][["recorded-vote"]], xmlValue)
 vote_data
@@ -29,8 +27,8 @@ vote_data
 all = t(xmlSApply(rootNode[[2]], function(x) xmlSApply(x,xmlValue)))
 leg_vote1 = as.data.frame(all[,1], row.names = NULL)
 leg_vote2 = as.data.frame(all[,2], row.names = NULL)
-leg_vote = cbind(congress,session,legislator=leg_vote1,vote=leg_vote2)
-colnames(leg_vote) = c('congress','session','legislator','vote')
+leg_vote = cbind(congress,session,rollcall,legislator=leg_vote1,vote=leg_vote2)
+colnames(leg_vote) = c('congress','session','rollcall','legislator','vote')
 leg_vote
 
 
