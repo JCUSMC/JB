@@ -27,8 +27,10 @@ vote_data
 
 # Read and transpose all of the "recorded-vote" child node
 all = t(xmlSApply(rootNode[[2]], function(x) xmlSApply(x,xmlValue)))
-leg_vote = all[,2:3]
+leg_vote1 = as.data.frame(all[,1], row.names = NULL)
+leg_vote2 = as.data.frame(all[,2], row.names = NULL)
+leg_vote = cbind(congress,session,legislator=leg_vote1,vote=leg_vote2)
+colnames(leg_vote) = c('congress','session','legislator','vote')
 leg_vote
 
-x = xmlSApply(rootNode[[2]], xmlValue)
-x
+
